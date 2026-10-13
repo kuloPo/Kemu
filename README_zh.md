@@ -2,7 +2,7 @@
 
 ## 项目介绍
 
-Kemu 是面向 Windows 的高性能开源 Android 模拟器，基于 AOSP Android 16 和 Android Emulator / QEMU，使用 WHPX 硬件加速、ANGLE / gfxstream 图形栈及 ARM64 Native Bridge 转译。应用兼容性与性能仍在完善。
+Kemu 是面向 Windows 的高性能开源 Android 模拟器，基于 AOSP Android 16 和 Android Emulator / QEMU，使用 WHPX 硬件加速、ANGLE / gfxstream 图形栈及 Digitalis ARM64 Native Bridge 转译。应用兼容性与性能仍在完善。
 
 
 
