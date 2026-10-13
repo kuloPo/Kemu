@@ -2,7 +2,7 @@
 
 ## Overview
 
-Kemu is a high-performance, open-source Android emulator for Windows. Built on AOSP Android 16 and Android Emulator / QEMU, it uses WHPX hardware acceleration, the ANGLE / gfxstream graphics stack, and ARM64 Native Bridge translation. Application compatibility and performance are still being improved.
+Kemu is a high-performance, open-source Android emulator for Windows. Built on AOSP Android 16 and Android Emulator / QEMU, it uses WHPX hardware acceleration, the ANGLE / gfxstream graphics stack, and Digitalis ARM64 Native Bridge translation. Application compatibility and performance are still being improved.
 
 ## Downloads
 
