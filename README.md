@@ -79,7 +79,6 @@ The script creates a `system-img` folder alongside `Kemu.exe` and copies the req
 | Build Output File | Destination File |
 | --- | --- |
 | `system-qemu.img` | `system-img/system.img` |
-| `vendor-qemu.img` | `system-img/vendor.img` |
 | `ramdisk-qemu.img` | `system-img/ramdisk.img` |
 | `userdata.img` | `system-img/userdata.img` |
 | `encryptionkey.img` | `system-img/encryptionkey.img` |
@@ -89,7 +88,7 @@ The script creates a `system-img` folder alongside `Kemu.exe` and copies the req
 | `kernel-ranchu` | `system-img/kernel-ranchu` |
 | `VerifiedBootParams.textproto` | `system-img/VerifiedBootParams.textproto` |
 
-Use the complete set of files from the same build. For the first three entries, copy the images with the `-qemu` suffix and rename them as shown in the table.
+Use the complete set of files from the same build. For the first two entries, copy the images with the `-qemu` suffix and rename them as shown in the table.
 
 ### 5. Launch Kemu
 

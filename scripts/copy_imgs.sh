@@ -18,7 +18,6 @@ fi
 mkdir -p $2/system-img
 
 cp $1/system-qemu.img $2/system-img/system.img
-cp $1/vendor-qemu.img $2/system-img/vendor.img
 cp $1/ramdisk-qemu.img $2/system-img/ramdisk.img
 cp $1/userdata.img $2/system-img/
 cp $1/encryptionkey.img $2/system-img/

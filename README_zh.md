@@ -83,7 +83,6 @@ scripts/copy_imgs.sh \
 | 编译输出文件 | 目标文件 |
 | --- | --- |
 | `system-qemu.img` | `system-img/system.img` |
-| `vendor-qemu.img` | `system-img/vendor.img` |
 | `ramdisk-qemu.img` | `system-img/ramdisk.img` |
 | `userdata.img` | `system-img/userdata.img` |
 | `encryptionkey.img` | `system-img/encryptionkey.img` |
@@ -93,7 +92,7 @@ scripts/copy_imgs.sh \
 | `kernel-ranchu` | `system-img/kernel-ranchu` |
 | `VerifiedBootParams.textproto` | `system-img/VerifiedBootParams.textproto` |
 
-请使用同一次构建生成的整套文件。注意前三项需要复制带 `-qemu` 后缀的镜像，并按表格重命名。
+请使用同一次构建生成的整套文件。注意前两项需要复制带 `-qemu` 后缀的镜像，并按表格重命名。
 
 ### 5. 启动 Kemu
 
