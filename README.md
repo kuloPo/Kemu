@@ -93,3 +93,5 @@ Use the complete set of files from the same build. For the first two entries, co
 ### 5. Launch Kemu
 
 On Windows, double-click `Kemu.exe` in `out/kemu-windows-x86_64/distribution/emulator`.
+
+New instances use a 128 GiB data disk. Settings > Performance > Storage shows its allocated host space and total capacity. Expand disk preserves existing data and asks for confirmation before restarting to apply a larger capacity. Existing disks keep their current capacity.

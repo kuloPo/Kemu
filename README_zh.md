@@ -98,5 +98,7 @@ scripts/copy_imgs.sh \
 
 在 Windows 中双击位于`out/kemu-windows-x86_64/distribution/emulator`目录下的 `Kemu.exe`
 
+新建实例默认使用 128 GiB 数据盘。“设置 → 性能 → 存储”显示数据盘在电脑上的实际占用和总容量。点击“扩大磁盘”后，需要确认重启才会扩容，现有数据会保留。已有数据盘保持当前容量。
+
 
 
