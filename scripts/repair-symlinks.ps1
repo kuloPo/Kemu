@@ -3,7 +3,6 @@ $ErrorActionPreference = 'Stop'
 
 $ProjectRoot = 'D:\Kemu'
 $SourceRoot  = Join-Path $ProjectRoot 'emulator'
-$BuildRoot   = Join-Path $ProjectRoot 'out\kemu-windows-x86_64'
 
 # ---- 1. enable the privilege that is already in this token ----
 if (-not ('Kemu.TokenPriv' -as [type])) {
@@ -66,40 +65,77 @@ $repos = foreach ($p in $projects) {
     if (Test-Path -LiteralPath $full -PathType Container) { $full }
 }
 
+# Repo-relative paths of index symlinks that exist on disk but are not symlinks.
 function Get-BrokenLinks([string]$repo) {
-    git -C $repo ls-files -s | Where-Object { $_ -like '120000 *' } | ForEach-Object {
+    git -C $repo -c core.quotePath=false ls-files -s | Where-Object { $_ -like '120000 *' } | ForEach-Object {
         $path = ($_ -split '\s+', 4)[3]
         $full = Join-Path $repo ($path -replace '/', '\')
         if (Test-Path -LiteralPath $full) {
-            if ((Get-Item -LiteralPath $full -Force).LinkType -ne 'SymbolicLink') { $full }
+            if ((Get-Item -LiteralPath $full -Force).LinkType -ne 'SymbolicLink') { $path }
         }
     }
 }
 
-# ---- 3. local core.symlinks=true (system gitconfig stays untouched) ----
-$targets = foreach ($r in $repos) {
-    if ((Get-BrokenLinks $r).Count -gt 0) {
-        git -C $r config core.symlinks true
-        $r
+# ---- 3. find interrupted checkouts ----
+# git writes the index only when a checkout completes. Without it ls-files lists
+# nothing, so neither broken links nor files the checkout never wrote are visible.
+$noIndex = @(foreach ($r in $repos) {
+    if (-not (Test-Path -LiteralPath (Join-Path (git -C $r rev-parse --absolute-git-dir) 'index'))) { $r }
+})
+"repos without an index: $($noIndex.Count)"
+if ($DryRun) {
+    $noIndex | ForEach-Object { "  $_" }
+} else {
+    foreach ($r in $noIndex) {
+        git -C $r reset -q    # rebuild the index from HEAD; the worktree stays as it is
+        if ($LASTEXITCODE) { throw "git reset failed in $r" }
     }
 }
-"repos to repair: $($targets.Count)"
 
-# ---- 4. delete the mis-materialized files ----
-$broken = foreach ($r in $targets) { Get-BrokenLinks $r }
-"broken files: $($broken.Count)"
-if ($DryRun) { $broken | Select-Object -First 30; Write-Output 'DryRun: nothing changed.'; return }
-foreach ($f in $broken) { Remove-Item -LiteralPath $f -Force }
+# ---- 4. collect the paths to restore ----
+# Missing files are restored only where the checkout was interrupted; elsewhere a
+# deleted file may be an intended worktree change.
+$work = foreach ($r in $repos) {
+    $links = @(Get-BrokenLinks $r)
+    $missing = @()
+    if (-not $DryRun -and $noIndex -contains $r) {
+        $missing = @(git -C $r -c core.quotePath=false ls-files --deleted)
+    }
+    if ($links.Count -or $missing.Count) {
+        [pscustomobject]@{ Repo = $r; Links = $links; Missing = $missing }
+    }
+}
+"repos to repair: $(@($work).Count)"
+"broken links: $(($work | ForEach-Object { $_.Links.Count } | Measure-Object -Sum).Sum)"
+"missing files: $(($work | ForEach-Object { $_.Missing.Count } | Measure-Object -Sum).Sum)"
+if ($DryRun) {
+    $work | ForEach-Object { $w = $_; $w.Links | ForEach-Object { Join-Path $w.Repo $_ } } | Select-Object -First 30
+    Write-Output 'DryRun: nothing changed.'
+    return
+}
 
-# ---- 5. re-checkout from the local object stores (offline) ----
-foreach ($r in $targets) {
-    git -C $r checkout -- .
-    if ($LASTEXITCODE) { throw "git checkout failed in $r" }
+# ---- 5. rewrite only those paths from the index (offline) ----
+# local core.symlinks=true (system gitconfig stays untouched)
+$pathFile = [IO.Path]::GetTempFileName()
+try {
+    foreach ($w in $work) {
+        if ($w.Links.Count) { git -C $w.Repo config core.symlinks true }
+        foreach ($p in $w.Links) { Remove-Item -LiteralPath (Join-Path $w.Repo ($p -replace '/', '\')) -Force }
+        # NUL-separated paths in a file: piping to git would append CR to every path.
+        [IO.File]::WriteAllText($pathFile, ((@($w.Links) + @($w.Missing)) -join "`0"),
+                                (New-Object System.Text.UTF8Encoding $false))
+        git --literal-pathspecs -C $w.Repo restore --pathspec-from-file=$pathFile --pathspec-file-nul
+        if ($LASTEXITCODE) { throw "git restore failed in $($w.Repo)" }
+    }
+} finally {
+    Remove-Item -LiteralPath $pathFile -Force
 }
 
 # ---- 6. verify ----
-$remaining = foreach ($r in $targets) { Get-BrokenLinks $r }
+$remaining = foreach ($w in $work) { Get-BrokenLinks $w.Repo | ForEach-Object { Join-Path $w.Repo $_ } }
 if ($remaining.Count -gt 0) { $remaining | Select-Object -First 20; throw "$($remaining.Count) entries still not symlinks." }
+$stillMissing = foreach ($r in $noIndex) { git -C $r -c core.quotePath=false ls-files --deleted | ForEach-Object { Join-Path $r $_ } }
+if ($stillMissing.Count -gt 0) { $stillMissing | Select-Object -First 20; throw "$($stillMissing.Count) files still missing." }
 
 foreach ($probe in 'prebuilts\clang\host\windows-x86\clang-r596125\bin\clang-cl.exe',
                    'prebuilts\android-emulator-build\qt\windows-x86_64\include',
@@ -113,7 +149,4 @@ foreach ($probe in 'prebuilts\clang\host\windows-x86\clang-r596125\bin\clang-cl.
 $dirty = 0
 foreach ($r in $repos) { if (git -C $r status --porcelain) { $dirty++; Write-Output "dirty: $r" } }
 "repos with dirty worktree: $dirty"
-
-# ---- 7. drop the poisoned CMake cache ----
-if (Test-Path -LiteralPath $BuildRoot) { Remove-Item -LiteralPath $BuildRoot -Recurse -Force }
 Write-Output 'Repair done. run: build-emulator.ps1'
