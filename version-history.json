@@ -4,6 +4,7 @@
     { "version": "v0.1.0", "files": [] },
     { "version": "v0.2.0", "files": [] },
     { "version": "v0.3.0", "files": [] },
-    { "version": "v0.4.0", "files": ["/system/lib64/libberberis_arm64.so", "/system/lib64/libberberis_proxy_libc.so", "/vendor/lib64/hw/vulkan.ranchu.so", "Kemu.exe", "lib64/libgfxstream_backend.dll", "qemu/windows-x86_64/qemu-system-x86_64.exe"] }
+    { "version": "v0.4.0", "files": ["/system/lib64/libberberis_arm64.so", "/system/lib64/libberberis_proxy_libc.so", "/vendor/lib64/hw/vulkan.ranchu.so", "Kemu.exe", "lib64/libgfxstream_backend.dll", "qemu/windows-x86_64/qemu-system-x86_64.exe"] },
+    { "version": "v0.4.1", "files": [] }
   ]
 }
