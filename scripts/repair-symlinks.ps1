@@ -1,7 +1,7 @@
 param([switch]$DryRun)
 $ErrorActionPreference = 'Stop'
 
-$ProjectRoot = 'D:\Kemu'
+$ProjectRoot = Split-Path -Parent $PSScriptRoot
 $SourceRoot  = Join-Path $ProjectRoot 'emulator'
 
 # ---- 1. enable the privilege that is already in this token ----

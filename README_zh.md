@@ -4,13 +4,9 @@
 
 Kemu 是面向 Windows 的高性能开源 Android 模拟器，基于 AOSP Android 16 和 Android Emulator / QEMU，使用 WHPX 硬件加速、ANGLE / gfxstream 图形栈及 Digitalis ARM64 Native Bridge 转译。应用兼容性与性能仍在完善。
 
-
-
 ## 下载链接
 
 [GitHub Releases](https://github.com/kuloPo/Kemu/releases)
-
-
 
 ## 从源码编译并运行
 
@@ -22,8 +18,6 @@ Kemu 是面向 Windows 的高性能开源 Android 模拟器，基于 AOSP Androi
 - Git for Windows（含 Git Bash）、Python 3。
 - Visual Studio 18（2026），安装“使用 C++ 的桌面开发”、ATL/MFC 和 Windows SDK，使用 x64 开发环境。
 - WSL Linux 环境，已安装 Git、Git LFS、Repo 及 AOSP 编译依赖，并预留充足的磁盘空间。
-
-以下命令以本项目位于 `D:\Kemu` 为例，且该目录下已有 `scripts` 文件夹。当前 `repair-symlinks.ps1` 中的项目路径固定为 `D:\Kemu`；若使用其他目录，请先修改该脚本的 `$ProjectRoot`。
 
 ### 1. 下载模拟器源码
 
@@ -96,9 +90,4 @@ scripts/copy_imgs.sh \
 
 ### 5. 启动 Kemu
 
-在 Windows 中双击位于`out/kemu-windows-x86_64/distribution/emulator`目录下的 `Kemu.exe`
-
-新建实例默认使用 128 GiB 数据盘。“设置 → 性能 → 存储”显示数据盘在电脑上的实际占用和总容量。点击“扩大磁盘”后，需要确认重启才会扩容，现有数据会保留。已有数据盘保持当前容量。
-
-
-
+在 Windows 中双击 `out/kemu-windows-x86_64/distribution/emulator` 目录下的 `Kemu.exe`。

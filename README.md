@@ -19,8 +19,6 @@ The build has two parts: build the emulator on Windows, then build the Android s
 - Visual Studio 18 (2026) with the **Desktop development with C++** workload, ATL/MFC, and the Windows SDK installed. Use the x64 development environment.
 - A WSL Linux environment with Git, Git LFS, Repo, and the AOSP build dependencies installed, plus sufficient free disk space.
 
-The commands below assume that the project is located at `D:\Kemu` and that its `scripts` directory is already present. The project path in `repair-symlinks.ps1` is currently hardcoded to `D:\Kemu`. If you use a different location, update `$ProjectRoot` in that script first.
-
 ### 1. Download the Emulator Source
 
 Run the following in **Git Bash on Windows**:
@@ -93,5 +91,3 @@ Use the complete set of files from the same build. For the first two entries, co
 ### 5. Launch Kemu
 
 On Windows, double-click `Kemu.exe` in `out/kemu-windows-x86_64/distribution/emulator`.
-
-New instances use a 128 GiB data disk. Settings > Performance > Storage shows its allocated host space and total capacity. Expand disk preserves existing data and asks for confirmation before restarting to apply a larger capacity. Existing disks keep their current capacity.
