@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='utf-8'?>
+<manifest>
+  <remote name="github" fetch="https://github.com/kuloPo/" />
+  <remote name="aosp" fetch="https://android.googlesource.com/" review="https://android-review.googlesource.com/" />
+  <default remote="aosp" sync-j="4" />
+  <project path="build/make" name="platform/build" revision="0984226dbac1a947ad34490e0647cf7e5c5e6d14" />
+  <project path="tools/buildSrc" name="platform/tools/buildSrc" revision="84f5a11087cc9fcd353ccd6cfc490fb2a226948e" />
+  <project path="external/libslirp" name="trusty/external/qemu-libslirp" revision="f5b10930fefe77d285189cd2438f69c679466e01" />
+  <project path="external/abseil-cpp" name="platform/external/abseil-cpp" revision="000dabbd0c985dae5c40eb3a9531d4c8ee3f9d18" />
+  <project path="external/adt-infra" name="platform/external/adt-infra" revision="8e119fed69931ef12011d65292e00a98b0f8849d" />
+  <project path="external/mobly-bundled-snippets" name="platform/external/mobly-bundled-snippets" revision="b0bdd3a435593ede2e353d4ff80cc3d949cf5529" />
+  <project path="external/angle" name="platform/external/angle" revision="901e32aa9923b05c3a2af846f8a28fc79c93d0be" />
+  <project path="external/astc-codec" name="platform/external/astc-codec" revision="17ae36822a8084f45ae51f9031e81f8318254f33" />
+  <project path="external/boringssl" name="platform/external/boringssl" clone-depth="1" revision="54ed1d5a4e7cdacd82f95a0aec1e89a488db84e6" />
+  <project path="external/cares" name="platform/external/c-ares" revision="42cf8dee534419f1826f474d2f5fd67ac94a1706" />
+  <project path="external/crashpad" name="platform/external/crashpad" clone-depth="1" revision="dd7db6790d73210abaef36a04f2a2bd52cf22b89" />
+  <project path="build/bazel" name="platform/build/bazel" revision="0d382f91916499455604916a191e3bcf0cddf4fe">
+    <linkfile src="toplevel.bazelrc" dest=".bazelrc" />
+    <linkfile src="toplevel.bazelversion" dest=".bazelversion" />
+  </project>
+  <project path="third_party/pkg-config" name="platform/external/pkg-config" clone-depth="1" revision="110660333d9126a57154408fff5f675867cfd1f7" />
+  <project path="prebuilts/bazel/windows-x86_64" name="platform/prebuilts/bazel/windows-x86_64" clone-depth="1" groups="notdefault,platform-windows" revision="1c6b2b08c3719423b6f1059581f14b6eeb2426d6" />
+  <project path="external/curl" name="platform/external/curl" revision="1da4b04273638c8afe6f88bd7a7ccfb693640773" />
+  <project path="external/dtc" name="platform/external/dtc" revision="793ba05b3773657925e47630181c9a1bcd297b7f" />
+  <project path="external/deqp" name="platform/external/deqp" revision="f39b329be1bd88a6e358a9ee15d0d09e10865921" />
+  <project path="external/fmtlib" name="platform/external/fmtlib" revision="e488b7aacbf0059d473d0e464497b66b93c98a71" />
+  <project path="external/gfxstream-protocols" name="platform/external/gfxstream-protocols" revision="9bc1eed18fdb082e78966ecb9324a08f7cd8d76f" />
+  <project path="external/googletest" name="platform/external/googletest" revision="e81bfbe1acc9f2b1672d7c566e136f8d3a214cba" />
+  <project path="external/google-benchmark" name="platform/external/google-benchmark" revision="1bff076dad8a0cbb740e7f68586d59c3bb3e1bfd" />
+  <project path="external/google-breakpad" name="platform/external/google-breakpad" revision="5f320a2fd0f8192fcce0407fc8b721351e518789" />
+  <project path="external/grpc" name="platform/external/grpc-grpc" revision="fea7de5acfa2da17203f8eea78f974b41bcb6807" />
+  <project path="external/libusb" name="platform/external/libusb" revision="23f123a3f531572d14a253db3451c950e21d2447" />
+  <project path="external/libpng" name="platform/external/libpng" revision="7b1535de9846d23a766ee63a1d0ddfd5808e0a18" />
+  <project path="external/libxml2" name="platform/external/libxml2" revision="27570c2a5b96dc5aea1a0085f610f37ab744f643" />
+  <project path="external/lz4" name="platform/external/lz4" revision="1733cd0bd46619829b46b1667f3af091d9337c34" />
+  <project path="external/protobuf" name="platform/external/protobuf" revision="623d88a75a0b17ad2cc4be8fa79c3b97e7384a40" />
+  <project path="external/perfetto" name="platform/external/perfetto" revision="37518c39e3db120322359090db3d54f6ac100078" />
+  <project path="external/qemu" name="Kemu-emulator_external_qemu" remote="github" revision="584186c73be7782b36e0ac9cc15be74cddb9f119" dest-branch="kemu/main">
+    <copyfile src="android/vscode/emu.code-workspace" dest="emu.code-workspace" />
+    <linkfile src="toplevel.MODULE.bazel" dest="MODULE.bazel" />
+    <linkfile src="toplevel.MODULE.bazel.lock" dest="MODULE.bazel.lock" />
+  </project>
+  <project path="external/regex-re2" name="platform/external/regex-re2" revision="3b76205b4a5ab7fd9a11df8ac930d21cf52ad189" />
+  <project path="external/glib" name="platform/external/bluetooth/glib" revision="9f3ee561eee2bc195845201a4931d4709ff597e5" />
+  <project path="external/tinyobjloader" name="platform/external/tinyobjloader" revision="d16a940067fbc191364fc1d3e2a2d907209c9320" />
+  <project path="external/virglrenderer" name="platform/external/virglrenderer" revision="5d6e453751926c5209c7bad5ef7a6285feef5bb6" />
+  <project path="external/nasm" name="platform/external/nasm" revision="645e4f02c622ba67eb754000cc00c9db8be31f85" />
+  <project path="external/wpa_supplicant_8" name="platform/external/wpa_supplicant_8" revision="db64ab725acee6991a7ee9746d960731cca0b563" />
+  <project path="external/zlib" name="platform/external/zlib" revision="5a4f1701693dff36e495d13dd14b70e15abe0d01" />
+  <project path="hardware/google/aemu" name="platform/hardware/google/aemu" groups="pdk" revision="b556b00ac5fffde13c5cbad1b659c528832f9da6" />
+  <project path="hardware/google/gfxstream" name="Kemu-emulator_hardware_google_gfxstream" remote="github" groups="pdk" revision="4eea2c6ec2f74b1a19d9871f44b7c5de74cbb8d9" dest-branch="emu-main-dev" />
+  <project path="prebuilts/android-emulator-build/archive" name="platform/prebuilts/android-emulator-build/archive" clone-depth="1" revision="9b0bdade8b09267282fb901d21219ab6af013c60" />
+  <project path="prebuilts/android-emulator-build/common" name="platform/prebuilts/android-emulator-build/common" clone-depth="1" revision="77441b3b04746081afbd0aa6f360b6704da58cc2" />
+  <project path="prebuilts/android-emulator-build/mesa" name="platform/prebuilts/android-emulator-build/mesa" clone-depth="1" revision="be7c00f399b415511d73308f0af0c0310512aced" />
+  <project path="prebuilts/android-emulator-build/mesa-deps" name="platform/prebuilts/android-emulator-build/mesa-deps" clone-depth="1" revision="17837fdb1889014fa01cbbbda56afc9b6034815f" />
+  <project path="prebuilts/android-emulator-build/qemu-android-deps" name="platform/prebuilts/android-emulator-build/qemu-android-deps" clone-depth="1" revision="b06aee625002d0738c5576bbf437b9378229bef0" />
+  <project path="prebuilts/android-emulator-build/qt" name="platform/prebuilts/android-emulator-build/qt" clone-depth="1" revision="f2d41b8d15c2a628e95c2e755ed92186d03b763c" />
+  <project name="device/google/cuttlefish" path="device/google/cuttlefish" revision="e14cb71de2fd7443ff923c00e783fe97943e7640" />
+  <project path="tools/netsim" name="platform/tools/netsim" revision="350cb06552eafca597f3868612234c1bc2d2cad0" />
+  <project path="tools/rootcanal" name="platform/tools/rootcanal" revision="8e3819a6928aa76eda71407860e95bd8291cfe5f" />
+  <project path="prebuilts/ninja/windows-x86" name="platform/prebuilts/ninja/windows-x86" clone-depth="1" groups="notdefault,platform-windows" revision="da5e168e07dda6b4cdc5f5144468ae97f43808b1" />
+  <project path="prebuilts/clang/host/windows-x86" name="platform/prebuilts/clang/host/windows-x86" clone-depth="1" groups="notdefault,platform-windows" revision="28707216dd908300d0ae7616697bd65842eb0dd6" />
+  <project path="prebuilts/cmake/windows-x86" name="platform/prebuilts/cmake/windows-x86" clone-depth="1" groups="notdefault,platform-windows" revision="7e749a06ad6ad862a30bcb15c2cab42cbb865e44" />
+  <project path="prebuilts/python/windows-x86" name="platform/prebuilts/python/windows-x86" clone-depth="1" groups="notdefault,platform-windows" revision="7119932cd3cea23f16db62e683b69c23e415ff09" />
+  <project path="prebuilts/studio/jdk" name="platform/prebuilts/studio/jdk" clone-depth="1" revision="ab98332f5597d8e2eecbe4c4b35a3d1272bc4783" />
+  <project path="external/tink" name="platform/external/tink" revision="f416fdeb6d1ebafda566d4ecff80eace51a750f2" />
+  <project path="external/rapidjson" name="platform/external/rapidjson" revision="4d42830893d6728eba192789c0629d76a359fca0" />
+  <project path="external/webrtc" name="platform/external/webrtc" revision="34c5ae008bf811fce3006818f26f922b3647237a" />
+  <project path="external/flatbuffers" name="platform/external/flatbuffers" revision="696f46b5ac8fc8a326f8361d8007d9d9ba341ab0" />
+  <project path="external/mesa3d" name="Kemu-emulator_external_mesa3d" remote="github" revision="25f51884d4a9b64819f3d40a4bf6c026ef02d818" dest-branch="emu-main-dev" />
+  <project path="external/moltenvk" name="platform/external/moltenvk" revision="4d44e42aacc0734d4c55e26602e5aded66f73f6c" />
+  <project path="prebuilts/android-emulator-build/system-images" name="platform/prebuilts/android-emulator-build/system-images" clone-depth="1" revision="6d526de777b61fdbdaae61a24b1002db80870016">
+    <linkfile src="android-sdk" dest="prebuilts/android/android-sdk" />
+  </project>
+  <project path="tools/emulator" name="platform/tools/emulator" revision="187a7f78ca7360295be5ae9e6e7f80bee0675252" />
+  <project path="tools/repohooks" name="platform/tools/repohooks" groups="developers,tools" revision="ee593394dd36395f0f9433b738abf1859e92193d" />
+  <repo-hooks in-project="platform/tools/repohooks" enabled-list="pre-upload" revision="main" />
+</manifest>
