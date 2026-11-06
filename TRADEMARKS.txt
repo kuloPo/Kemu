@@ -1,0 +1,20 @@
+Android is a trademark of Google LLC.
+
+Kemu is an independent project and is not affiliated with, sponsored by, or
+endorsed by Google LLC.
+
+Microsoft, Visual Studio, and Windows are trademarks of the Microsoft group
+of companies.
+
+Qt is a registered trademark of The Qt Company Ltd. and its subsidiaries.
+
+QEMU is a trademark of Fabrice Bellard.
+
+Vulkan is a registered trademark of The Khronos Group Inc.
+
+OpenGL is a registered trademark of Hewlett Packard Enterprise in the United
+States and/or other countries worldwide.
+
+Other product names and trademarks belong to their respective owners. References
+identify the platforms, components and interfaces used by Kemu; they do not
+imply sponsorship, endorsement or certification.

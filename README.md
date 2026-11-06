@@ -2,7 +2,7 @@
 
 ## Overview
 
-Kemu is a high-performance, open-source Android emulator for Windows. Built on AOSP Android 16 and Android Emulator / QEMU, it uses WHPX hardware acceleration, the ANGLE / gfxstream graphics stack, and Digitalis ARM64 Native Bridge translation. Application compatibility and performance are still being improved.
+Kemu is a high-performance, open-source Android&#8482; emulator for Windows. Built on AOSP Android 16 and Android Emulator / QEMU, it uses WHPX hardware acceleration, the ANGLE / gfxstream graphics stack, and Digitalis ARM64 Native Bridge translation. Application compatibility and performance are still being improved.
 
 ## Downloads
 
@@ -91,3 +91,17 @@ Use the complete set of files from the same build. For the first two entries, co
 ### 5. Launch Kemu
 
 On Windows, double-click `Kemu.exe` in `out/kemu-windows-x86_64/distribution/emulator`.
+
+## Licenses and Trademarks
+
+Kemu's original code uses [GNU GPL version 2 or any later version](LICENSE)
+(`GPL-2.0-or-later`). Third-party components retain their own
+licenses. See [licenses, bundled notices and release source code](LEGAL.md).
+Settings > About provides offline license and trademark information.
+
+Android is a trademark of Google LLC. Kemu is an independent project and is not
+affiliated with, sponsored by, or endorsed by Google LLC.
+
+Microsoft, Visual Studio, and Windows are trademarks of the Microsoft group of
+companies. QEMU is a trademark of Fabrice Bellard.
+See [all trademark notices](TRADEMARKS.txt).

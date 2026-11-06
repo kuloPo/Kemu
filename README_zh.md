@@ -2,7 +2,7 @@
 
 ## 项目介绍
 
-Kemu 是面向 Windows 的高性能开源 Android 模拟器，基于 AOSP Android 16 和 Android Emulator / QEMU，使用 WHPX 硬件加速、ANGLE / gfxstream 图形栈及 Digitalis ARM64 Native Bridge 转译。应用兼容性与性能仍在完善。
+Kemu 是面向 Windows 的高性能开源 Android&#8482; 模拟器，基于 AOSP Android 16 和 Android Emulator / QEMU，使用 WHPX 硬件加速、ANGLE / gfxstream 图形栈及 Digitalis ARM64 Native Bridge 转译。应用兼容性与性能仍在完善。
 
 ## 下载链接
 
@@ -91,3 +91,17 @@ scripts/copy_imgs.sh \
 ### 5. 启动 Kemu
 
 在 Windows 中双击 `out/kemu-windows-x86_64/distribution/emulator` 目录下的 `Kemu.exe`。
+
+## 开源许可与商标
+
+Kemu 自有代码使用 [GNU GPL 第 2 版或后续版本](LICENSE)
+（`GPL-2.0-or-later`），第三方组件保留各自的许可证。
+完整说明、随包声明和发布版本对应的源码获取方式见[许可与源码说明](LEGAL.md)。
+软件内可通过“设置 → 关于”离线查看许可证和商标声明。
+
+Android is a trademark of Google LLC.
+Kemu 是独立项目，与 Google LLC 无隶属关系，亦未获得其赞助或背书。
+
+Microsoft, Visual Studio, and Windows are trademarks of the Microsoft group of
+companies. QEMU is a trademark of Fabrice Bellard.
+完整归属信息见[商标声明](TRADEMARKS.txt)。
